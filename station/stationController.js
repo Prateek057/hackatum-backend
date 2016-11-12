@@ -41,8 +41,7 @@ exports.getStationByName = function(req, res){
 };
 
 exports.getStationByLine = function(req, res){
-    var searchString = " { \"line\": /"+req.params.line_id+"/ }";
-    Station.find(searchString, function(err, station) {
+    Station.find({line: req.params.line_id}, function(err, station) {
         if (err) {
             console.log(errorForStack);
             res.status(500).send(err);

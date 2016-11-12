@@ -6,12 +6,15 @@ var Station = new mongoose.Schema({
     line: String, //U6
     id: String, //Primary key
     name: String, //Marienplatz
-    // Services: String,
-    services: [{
-        //type: mongoose.Schema.Types.ObjectId,
-        type: String,
-        ref: 'Services'
-    }]
+    Services: {
+      serviceid: String, //Primary key
+      name: String, //WC or Supermarket or Cigarette or Klinikum
+      description: String, //distance or link
+      url: String, //URL
+      verified: String,
+      upvote: Number,
+      downvote: Number
+    }
 });
 
 // Export the Mongoose model
