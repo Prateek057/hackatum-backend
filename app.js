@@ -51,6 +51,8 @@ var questionRoutes = require("./question/questionRoutes");
 var historyRoutes = require("./history/historyRoutes");
 var antipatternRoutes = require("./antipattern/antipatternRoutes");
 
+var stationRoutes = require("./station/stationRoutes");
+
 app.use('/api', antipatternRoutes(passport));
 app.use('/api', historyRoutes(passport));
 app.use('/api', questionRoutes(passport));
@@ -58,5 +60,7 @@ app.use('/api', movieRoutes(passport));
 app.use('/api', patternRoutes(passport));
 app.use('/', userRoutes(passport));
 
+//Siemens
+app.use('/api', stationRoutes(passport));
 
 module.exports = app;
