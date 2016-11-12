@@ -12,7 +12,7 @@ exports.getAllLines = function(req, res){
 };
 
 exports.getStationById = function(req, res){
-    Station.find({ "id": req.params.station_id }, function(err, station) {
+    Station.find({id: req.params.station_id }, function(err, station) {
         if (err) {
             console.log(errorForStack);
             res.status(500).send(err);
@@ -28,8 +28,8 @@ exports.putStation = function(req, res){
 };
 
 exports.getStationByName = function(req, res){
-    var searchString = " { \"name\": /"+req.params.station_name+"/ }";
-    Station.find(searchString, function(err, station) {
+
+    Station.find({name: req.params.station_name }, function(err, station) {
         if (err) {
             console.log(errorForStack);
             res.status(500).send(err);

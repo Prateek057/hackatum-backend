@@ -22,7 +22,7 @@ function stationRoutes(passport) {
     router.route("/line")
         .get(stationController.getAllLines);
 
-    router.route("/station/byId/:line_id")
+    router.route("/station/byLine/:line_id")
         .get(stationController.getStationByLine)
         .put(stationController.putStation);
 
