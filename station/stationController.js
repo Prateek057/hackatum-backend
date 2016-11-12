@@ -1,7 +1,7 @@
 var Station = require('./stationSchema');
 
 exports.getAllLines = function(req, res){
-    Station.find(function(err, lines) {
+    Station.find().distinct("line",function(err, lines) {
         if (err) {
             res.status(500).send(err);
             return;
