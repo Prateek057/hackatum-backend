@@ -3,14 +3,15 @@ var exec = require('child_process').exec;
 
 
 exports.getAllLines = function(req, res){
-    Station.find().distinct("line",function(err, lines) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-        res.statusCode= 200;
-        res.json(lines);
-    });
+    var lines = ["S1","S2","S3","S4","S7","U1","U2","U3","U4","U5","U6"];
+    // Station.find().distinct("line",function(err, lines) {
+    //     if (err) {
+    //         res.status(500).send(err);
+    //         return;
+    //     }
+    // });
+    res.statusCode= 200;
+    res.json(lines);
 };
 
 exports.getStationById = function(req, res){
