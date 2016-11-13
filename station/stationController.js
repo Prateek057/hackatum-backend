@@ -1,4 +1,6 @@
 var Station = require('./stationSchema');
+var exec = require('child_process').exec;
+
 
 exports.getAllLines = function(req, res){
     Station.find().distinct("line",function(err, lines) {
@@ -50,4 +52,25 @@ exports.getStationByLine = function(req, res){
         res.statusCode = 200;
         res.json(station);
     });
+};
+
+exports.getLiveData = function(req, res){
+
+    var command = "mvg_json " + req.params.station_name;
+
+    // console.log(command);
+    var output; 
+    exec(command, function (error, stdout, stderr) {
+       console.log(stdout);
+       console.log(stderr);
+       //output = stdout;
+       res.send(stdout);
+    });
+
+     res.statusCode = 200;
+     //res = output; 
+};
+
+function execute(command, callback){
+    exec(command, function(error, stdout, stderr){ callback(stdout); });
 };

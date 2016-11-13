@@ -33,7 +33,8 @@ function stationRoutes(passport) {
     router.route("/station/byName/:station_name")
         .get(stationController.getStationByName);
 
-
+    router.route("/live/:station_name")
+        .get(stationController.getLiveData);
     return router;
 
 }
